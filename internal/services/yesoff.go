@@ -2,10 +2,10 @@ package services
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"suluskin/internal/models"
 )
 
 type Product struct {
@@ -35,7 +35,7 @@ type ApiResponse struct {
 }
 
 func ParseYesOff() {
-	url := "https://store.tildaapi.one/api/getproductslist/?storepartuid=566008143101&recid=801278298&c=1732556520328&getparts=true&getoptions=true&slice=1&size=36"
+	url := "https://store.tildaapi.one/api/getproductslist/?storepartuid=578946713771&recid=676489253&c=1732625505177&getparts=true&getoptions=true&slice=1&size=36"
 
 	// Создаем новый HTTP запрос
 	req, err := http.NewRequest("GET", url, nil)
@@ -73,7 +73,6 @@ func ParseYesOff() {
 	}
 
 	// Выводим тело ответа для диагностики
-	fmt.Println("Response Body: ", string(body))
 
 	// Декодируем JSON
 	var apiResponse ApiResponse
@@ -81,15 +80,23 @@ func ParseYesOff() {
 	if err != nil {
 		log.Fatalf("Error unmarshalling JSON: %v", err)
 	}
-
+	//count
 	// Выводим результат
+	categoryId, _ := models.CreateCategory(models.Category{
+		Name: "Для детей",
+	})
 	for _, product := range apiResponse.Products {
-		fmt.Printf("Product: %s\n", product.Title)
-		fmt.Printf("Price: %s\n", product.Price)
-		fmt.Printf("URL: %s\n", product.Url)
-		for _, edition := range product.Editions {
-			fmt.Printf("Edition Price: %s\n", edition.Price)
-			fmt.Printf("Edition Image: %s\n", edition.Img)
+		newProduct := models.Product{
+			Name:       product.Title,
+			Weight:     product.Descr,
+			Price:      product.Price,
+			Text:       product.Text,
+			Img:        product.Editions[0].Img,
+			CategoryId: categoryId,
+		}
+		_, err = models.CreateProduct(newProduct)
+		if err != nil {
+			log.Fatalf("Error creating product: %v", err)
 		}
 	}
 }
