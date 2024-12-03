@@ -16,7 +16,8 @@
 # next.js
 /.next/
 /out/
-
+.idea
+yarn.lock
 # production
 /build
 
