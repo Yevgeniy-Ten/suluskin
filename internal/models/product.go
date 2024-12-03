@@ -38,8 +38,9 @@ func (m *ProductsRepo) CreateProduct(product Product) (string, error) {
 }
 
 func (m *ProductsRepo) GetProductById(id string) (Product, error) {
+	objectID, err := primitive.ObjectIDFromHex(id)
 	var product Product
-	err := m.collection.FindOne(context.TODO(), primitive.M{"_id": id}).Decode(&product)
+	err = m.collection.FindOne(context.TODO(), primitive.M{"_id": objectID}).Decode(&product)
 	if err != nil {
 		return Product{}, err
 	}
@@ -62,7 +63,8 @@ func (m *ProductsRepo) GetProducts() ([]Product, error) {
 	return products, nil
 }
 func (m *ProductsRepo) DeleteProduct(id string) error {
-	_, err := m.collection.DeleteOne(context.TODO(), primitive.M{"_id": id})
+	objectID, err := primitive.ObjectIDFromHex(id)
+	_, err = m.collection.DeleteOne(context.TODO(), primitive.M{"_id": objectID})
 	if err != nil {
 		return err
 	}
