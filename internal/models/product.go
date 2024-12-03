@@ -9,14 +9,15 @@ import (
 )
 
 type Product struct {
-	ID         string `bson:"_id,omitempty"` // ID, который MongoDB генерирует автоматически
-	Name       string `bson:"name"`
-	Weight     string `bson:"weight"`
-	Price      string `bson:"price"`
-	Text       string `bson:"text"`
-	Img        string `bson:"img"`
-	CategoryId string `bson:"category_id"`
-	Enabled    bool   `bson:"enabled"`
+	ID         string   `bson:"_id,omitempty"` // ID, который MongoDB генерирует автоматически
+	Name       string   `bson:"name"`
+	Weight     string   `bson:"weight"`
+	Price      string   `bson:"price"`
+	Text       string   `bson:"text"`
+	Img        string   `bson:"img"`
+	CategoryId string   `bson:"category_id"`
+	Enabled    bool     `bson:"enabled"`
+	Category   Category `json:"category" bson:"category"` // Поле для категории
 }
 
 type ProductsRepo struct {
@@ -38,14 +39,38 @@ func (m *ProductsRepo) CreateProduct(product Product) (string, error) {
 }
 
 func (m *ProductsRepo) GetProductById(id string) (Product, error) {
+	// Преобразуем строковый id в ObjectID
 	objectID, err := primitive.ObjectIDFromHex(id)
-	var product Product
-	err = m.collection.FindOne(context.TODO(), primitive.M{"_id": objectID}).Decode(&product)
 	if err != nil {
 		return Product{}, err
 	}
+
+	matchStage := bson.D{{"$match", bson.D{
+		{"_id", objectID}, // фильтруем по _id
+	}}}
+	//	aggregate with category and product collections
+	lookupStage := bson.D{{"$lookup", bson.D{
+		{"from", "categories"},
+		{"localField", "category_id"},
+		{"foreignField", "_id"},
+		{"as", "category"},
+	}}}
+
+	cursor, err := m.collection.Aggregate(context.TODO(), mongo.Pipeline{matchStage, lookupStage})
+	if err != nil {
+		return Product{}, err
+	}
+	var product Product
+	for cursor.Next(context.Background()) {
+		err := cursor.Decode(&product)
+		if err != nil {
+			return Product{}, err
+		}
+
+	}
 	return product, nil
 }
+
 func (m *ProductsRepo) GetProducts() ([]Product, error) {
 	cursor, err := m.collection.Find(context.TODO(), primitive.M{})
 	if err != nil {
