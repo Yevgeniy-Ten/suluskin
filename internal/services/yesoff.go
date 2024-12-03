@@ -5,7 +5,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"suluskin/internal/models"
 )
 
 type Product struct {
@@ -82,21 +81,21 @@ func ParseYesOff() {
 	}
 	//count
 	// Выводим результат
-	categoryId, _ := models.CreateCategory(models.Category{
-		Name: "Для детей",
-	})
-	for _, product := range apiResponse.Products {
-		newProduct := models.Product{
-			Name:       product.Title,
-			Weight:     product.Descr,
-			Price:      product.Price,
-			Text:       product.Text,
-			Img:        product.Editions[0].Img,
-			CategoryId: categoryId,
-		}
-		_, err = models.CreateProduct(newProduct)
-		if err != nil {
-			log.Fatalf("Error creating product: %v", err)
-		}
-	}
+	//categoryId, _ := models.CreateCategory(models.Category{
+	//	Name: "Для детей",
+	//})
+	//for _, product := range apiResponse.Products {
+	//	newProduct := models.Product{
+	//		Name:       product.Title,
+	//		Weight:     product.Descr,
+	//		Price:      product.Price,
+	//		Text:       product.Text,
+	//		Img:        product.Editions[0].Img,
+	//		CategoryId: categoryId,
+	//	}
+	//	_, err = models.CreateProduct(newProduct)
+	//	if err != nil {
+	//		log.Fatalf("Error creating product: %v", err)
+	//	}
+	//}
 }
