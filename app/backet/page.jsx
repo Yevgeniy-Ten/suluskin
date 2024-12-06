@@ -43,7 +43,7 @@ const Backet = () => {
       category: {id: '2', name: 'Коллагены', enabled: false}
     }]
   const send = () => {
-    try{
+    try {
       const value = inputRef.current.value
       if (!value || value.length < 18) {
         toast.error('Введите номер телефона')
@@ -51,9 +51,9 @@ const Backet = () => {
       }
       service.sendToTg(`Новый заказ на сумму: 30000 тг\n\nТелефон: ${inputRef.current.value}\n \nТовары: ${products.map(p => `${p.name} - ${p.price}.\nКоличество: 3\n---------------------------`).join('\n')}
     `)
-    }catch (e) {
-      console.log(e)
-      toast.error('Ошибка отправки заказа')
+    } catch (e) {
+      toast.error(<div>Ошибка отправки заказа: Напишите нам в WhatsApp <a className={"underline text-red-600"} href="https://wa.me/77088395707">77088395707</a>
+      </div>)
     }
   }
   return (

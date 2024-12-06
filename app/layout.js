@@ -36,7 +36,7 @@ export default function RootLayout({children}) {
         </nav>
 
         <div className="flex items-center space-x-7">
-          <a href="https://wa.me/1234567890"
+          <a href="https://wa.me/77088395707"
              target="_blank">
             <img src="/wp.svg" alt=""
                  className={"w-8 transition duration-300 transform hover:scale-105"}/>
@@ -78,7 +78,7 @@ export default function RootLayout({children}) {
             <a href="https://www.instagram.com/suluskin/" className="text-[#ADBFAD] hover:text-white">
               Instagram
             </a>
-            <a href="https://wa.me" className="text-[#ADBFAD] hover:text-white">
+            <a href="https://wa.me/77088395707" className="text-[#ADBFAD] hover:text-white">
               WhatsApp
             </a>
             <a href="https://wa.me" className="text-[#ADBFAD] hover:text-white">
