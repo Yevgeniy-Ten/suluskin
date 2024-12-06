@@ -1,7 +1,9 @@
-import Image from "next/image";
 import Cards from "@/src/modules/Cards/Cards";
+import {Button} from "@/src/common/Button";
+
 
 export default function Home() {
+
   return (
     <div>
       <section className="py-8 bg-[#f8f8f8]">
@@ -10,10 +12,9 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-white mb-2">Акции месяца</h2>
           <p className="text-lg text-white mb-4">Не упустите шанс! Скидки на самые популярные
             товары.</p>
-          <a href="#"
-             className="bg-[#98a88a] text-white px-8 py-3 rounded-lg shadow-md hover:bg-[#88a77a] transition duration-300 transform hover:scale-105">
+          <Button>
             Перейти в акции
-          </a>
+          </Button>
         </div>
       </section>
 
