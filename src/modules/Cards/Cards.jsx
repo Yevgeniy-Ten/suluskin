@@ -3,7 +3,7 @@ import {ClientCards} from "@/src/modules/Cards/ClientCards";
 import {service} from "@/src/api/api";
 
 const Cards = async () => {
-  const products =await service.products()
+  const products = await service.products()
   return (
     <section className="py-12 px-4 sm:px-0 bg-gray-100">
       <div className="container mx-auto flex justify-between items-center mb-6 bg-gray-100 z-10">
