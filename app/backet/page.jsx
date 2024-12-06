@@ -63,12 +63,12 @@ const Backet = () => {
 
         <div className="bg-white shadow-lg rounded-lg overflow-hidden p-6">
           <div className="divide-y divide-[#ddd]">
-            <div className="flex items-center justify-between py-4">
+            <div className="flex items-center flex-wrap gap-4 border-b justify-end sm:justify-between py-4">
               <div className="flex items-center gap-4">
                 <img
                   src="https://static.tildacdn.com/stor3036-6163-4631-a637-653330376438/58727512.jpg"
                   alt="Bb Lab коллаген с пробиотиками"
-                  className="w-16 h-16 object-cover rounded-lg"/>
+                  className="w-20 h-20 object-cover rounded-lg"/>
                 <div>
                   <h3 className="text-lg font-semibold text-[#333]">Bb Lab коллаген с пробиотиками,
                     50 стиков</h3>
@@ -78,24 +78,6 @@ const Backet = () => {
               <div className="flex items-center gap-2">
                 <button className="px-3 py-1 bg-[#ddd] rounded-md hover:bg-[#ccc]">-</button>
                 <span className="text-lg font-semibold text-[#333]">2</span>
-                <button className="px-3 py-1 bg-[#ddd] rounded-md hover:bg-[#ccc]">+</button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between py-4">
-              <div className="flex items-center gap-4">
-                <img
-                  src="https://static.tildacdn.com/stor3533-6462-4437-a635-313037616534/83032812.jpg"
-                  alt="Lemona red коллаген" className="w-16 h-16 object-cover rounded-lg"/>
-                <div>
-                  <h3 className="text-lg font-semibold text-[#333]">Lemona red Питьевой морской
-                    коллаген, 60 стиков</h3>
-                  <span className="text-sm text-[#777]">₸5700</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <button className="px-3 py-1 bg-[#ddd] rounded-md hover:bg-[#ccc]">-</button>
-                <span className="text-lg font-semibold text-[#333]">1</span>
                 <button className="px-3 py-1 bg-[#ddd] rounded-md hover:bg-[#ccc]">+</button>
               </div>
             </div>
