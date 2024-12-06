@@ -5,10 +5,12 @@ export const ButtonSizes = {
   default: 'px-8 py-3',
   sm: 'px-6 py-1.5',
   smm: 'px-6 py-2',
+  xs:"px-3 py-1"
 }
 export const ButtonVariants = {
   filled: 'bg-[#98a88a] text-white border border-[#98a88a]',
   outlined: 'bg-white text-[#98a88a] border border-[#98a88a]',
+  gray: 'bg-gray-400 text-white border border-gray-400',
 }
 export const Button = ({
                          children,
@@ -21,7 +23,7 @@ export const Button = ({
   As = As === 'button' ? 'button' : Link;
   return (
     <As
-      className={classNames("rounded-lg shadow-md transition duration-300 transform hover:scale-105", variant, size, className)}
+      className={classNames("rounded-lg inline-flex items-center justify-center shadow-md transition duration-300 transform hover:scale-105", variant, size, className)}
       {...props}
     >
       {children}

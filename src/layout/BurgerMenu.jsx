@@ -12,7 +12,7 @@ export const BurgerMenu = () => {
     setOpen(false);
   }, [pathname]);
   return (
-    <div>
+    <div className={"md:hidden"}>
       <input
         onChange={() => setOpen(!open)}
         type="checkbox" id="burger-checkbox" className="burger-checkbox" checked={open}/>

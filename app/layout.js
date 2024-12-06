@@ -34,7 +34,7 @@ export default function RootLayout({children}) {
         <div>
           <h3 className="text-lg font-semibold mb-4">Контакты</h3>
           <p className="text-sm mb-3">Телефон: +7 708 839 57 07</p>
-          <p className="text-sm mb-3">Email: info@kcyj07017@gmail.com</p>
+          <p className="text-sm mb-3">Email: kcyj07017@gmail.com</p>
           <p className="text-sm">Адрес: ул. Сейфуллина, 412, Алматы</p>
         </div>
 

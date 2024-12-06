@@ -2,6 +2,7 @@ import {Link} from "@/src/common/Link";
 import {Button, ButtonSizes} from "@/src/common/Button";
 import {BurgerMenu} from "@/src/layout/BurgerMenu";
 import {Links, NavLinks} from "@/src/layout/Links";
+import {CardButton} from "@/src/layout/CardButton";
 
 
 export const Header = () => {
@@ -19,13 +20,8 @@ export const Header = () => {
           <div className={"items-center gap-7 md:flex hidden"}>
             <Links/>
           </div>
-          <Button As={"link"} href={"/backet"} size={ButtonSizes.sm}
-                  className={"flex items-center gap-3"}>
-            <img src="/shopping-card.svg" alt="" className={"w-7 flex-shrink-0"}/>
-            <span className={"hidden sm:visible"}>
-              Корзина
-            </span>
-          </Button>
+
+          <CardButton/>
           <BurgerMenu/>
         </div>
       </div>

@@ -12,9 +12,9 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-white mb-2">Акции месяца</h2>
           <p className="text-lg text-white mb-4">Не упустите шанс! Скидки на самые популярные
             товары.</p>
-          <Button>
-            Перейти в акции
-          </Button>
+          {/*<Button>*/}
+          {/*  Перейти в акции*/}
+          {/*</Button>*/}
         </div>
       </section>
 
