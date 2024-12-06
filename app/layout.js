@@ -3,6 +3,8 @@ import {Link} from "@/src/common/Link";
 import {Roboto} from 'next/font/google'
 import classNames from "classnames";
 import {Button, ButtonSizes} from "@/src/common/Button";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const montserrat = Roboto({
   weight: ["400", "700"],
@@ -90,6 +92,9 @@ export default function RootLayout({children}) {
         <p>© 2024 Косметический магазин. Все права защищены.</p>
       </div>
     </footer>
+    <ToastContainer
+      position={"top-center"}
+    />
     </body>
     </html>
   );

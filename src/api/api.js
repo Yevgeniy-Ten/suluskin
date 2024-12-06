@@ -4,12 +4,15 @@ export const service = {
     return await res.json()
   },
   sendToTg(data){
-    fetch('http://localhost:8080/tg', {
+    fetch('https://api.telegram.org/bot6533365793:AAH2cqvB7AnWvj_wOEDRkvTzAfbX81pnk70/sendMessage', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        chat_id: "-4783499028",
+        text:data,
+      }),
     })
   }
 }
