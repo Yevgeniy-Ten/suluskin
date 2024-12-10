@@ -1,62 +1,58 @@
 "use client";
-import {useState, useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {service} from "@/src/api/api";
 import {Loader} from "@/src/common/Loader";
 import {Card} from "@/src/modules/Cards/Card";
+import {Pagination} from "@/src/common/Pagination/Pagination";
 
-export const ClientCards = () => {
-  const [page, setPage] = useState(2);
+export const ClientCards = ({category}) => {
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [products, setProducts] = useState([]);
-  const [isEnd, setIsEnd] = useState(false);
   const [loading, setLoading] = useState(false);
-  const divRef = useRef(null);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const res = await service.products(page, category);
+      setProducts(res.products)
+      setTotalPages(res.total)
+    } catch (error) {
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Элемент стал видимым, делаем fetch запрос
-          service.products(page).then((data) => {
-            if (!data) {
-              observer.unobserve(divRef.current);
-              setIsEnd(true);
-              return;
-            }
-            setProducts([...products, ...data]);
-            setPage(page + 1);
-          });
-
-        }
-      });
-    }, {
-      rootMargin: '0px 0px 200px 0px' // Задаем область видимости с отступами
-    });
-
-    if (divRef.current) {
-      observer.observe(divRef.current);
-    }
-
-    return () => {
-      if (divRef.current) {
-        observer.unobserve(divRef.current);
-      }
-    };
-  }, [page]);
+    fetchProducts();
+  }, [page, category]);
+  useEffect(() => {
+    setPage(1);
+  }, [category]);
 
   return (
     <>
-      {
-        loading ? <Loader/> : <>
-          {products.map((product) => {
+      <div className={"container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"}>
+        {
+          products.map((product) => {
             return <Card key={product.id} product={product}/>
-          })}
-          {
-            !isEnd && <div ref={divRef} className={"mt-10"}>
-              <Loader/>
-            </div>
-          }
-        </>
-      }
+          })
+        }
+      </div>
+      <div className="container mx-auto mt-6">
+        {
+          !products.length && <div className={"text-center w-full"}>Нет товаров</div>
+        }
+        {
+          loading && <div className={"text-center col-span-12"}>
+            <Loader/>
+          </div>
+        }
+        {
+          !category && <Pagination setPage={setPage} totalPages={totalPages} currentPage={page}/>
+        }
+      </div>
     </>
   );
 };

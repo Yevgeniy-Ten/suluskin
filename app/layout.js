@@ -22,7 +22,7 @@ export default function RootLayout({children}) {
   return (
     <html lang="ru">
     <body
-      className={classNames("flex flex-col min-h-screen", montserrat.className)}
+      className={classNames("flex flex-col min-h-screen bgLogo", montserrat.className)}
     >
     <Header/>
     <main className={"flex-grow mt-24"}>
