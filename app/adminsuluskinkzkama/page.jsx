@@ -5,7 +5,7 @@ import {service} from "@/src/api/api";
 import {Button} from "@/src/common/Button";
 import {CategoryModal} from "@/src/modules/EditCategory/CategoryModal";
 import {useModal} from "@/src/common/hooks/useModal";
-import {CategoryItem} from "@/app/admin/CategoryItem";
+import {CategoryItem} from "@/app/adminsuluskinkzkama/CategoryItem";
 import {toast} from "react-toastify";
 import {EditProductModal} from "@/src/modules/EditProduct/EditProductModal";
 import {EditSubCategoryModal} from "@/src/modules/EditSubCategory/EditSubCategoryModal";

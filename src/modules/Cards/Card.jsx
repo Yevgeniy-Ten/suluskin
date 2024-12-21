@@ -21,10 +21,15 @@ export const Card = ({product}) => {
       </div>
       <div className="p-6 flex-grow  flex flex-col">
         <div className={"flex justify-between gap-3"}>
-          <h3 className="text-lg font-semibold text-[#333]"
+          <h3
+            onClick={e=>{
+              e.preventDefault()
+              e.stopPropagation()
+            }}
+            className="text-lg font-semibold text-[#333]"
           dangerouslySetInnerHTML={{__html: product.name}}
           />
-          <span className="text-lg text-nowrap font-bold text-[#ADBFAD]">{+product.price} ₸</span>
+          <span className="text-lg text-nowrap font-bold text-green-600">{+product.price} ₸</span>
         </div>
         <CardTags tags={product.subcategories}/>
         <div className={"flex-grow"}>

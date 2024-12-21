@@ -17,6 +17,10 @@ export const ClientCards = ({category}) => {
       const res = await service.products(page, category);
       setProducts(res.products)
       setTotalPages(res.total)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     } catch (error) {
       return null;
     } finally {
@@ -33,13 +37,7 @@ export const ClientCards = ({category}) => {
 
   return (
     <>
-      <div className={"container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"}>
-        {
-          products.map((product) => {
-            return <Card key={product.id} product={product}/>
-          })
-        }
-      </div>
+      <Cards products={products}/>
       <div className="container mx-auto mt-6">
         {
           !products.length && <div className={"text-center w-full"}>Нет товаров</div>
@@ -56,3 +54,13 @@ export const ClientCards = ({category}) => {
     </>
   );
 };
+export const Cards = ({products})=> {
+  return <div
+    className={"container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"}>
+    {
+      products.map((product) => {
+        return <Card key={product.id} product={product}/>
+      })
+    }
+  </div>
+}

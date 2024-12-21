@@ -12,21 +12,19 @@ export default function About() {
       <div className="flex flex-col md:flex-row items-center justify-center gap-8">
         <div className="text-center">
           <img
-            src="https://via.placeholder.com/150"
+            src="/kamilla.png"
             alt="Основатель 1"
             className="rounded-full mx-auto mb-4 w-36 h-36 object-cover"
           />
-          <h3 className="text-lg font-semibold">Анна Иванова</h3>
-          <p className="text-gray-600 text-sm">Генеральный директор</p>
+          <h3 className="text-lg font-semibold">Камилла Рыспекова</h3>
         </div>
         <div className="text-center">
           <img
-            src="https://via.placeholder.com/150"
+            src="/lira.png"
             alt="Основатель 2"
             className="rounded-full mx-auto mb-4 w-36 h-36 object-cover"
           />
-          <h3 className="text-lg font-semibold">Мария Петрова</h3>
-          <p className="text-gray-600 text-sm">Креативный директор</p>
+          <h3 className="text-lg font-semibold">Лира Рахымберлиева</h3>
         </div>
       </div>
     </section>
@@ -34,17 +32,21 @@ export default function About() {
     <section className="max-w-3xl mx-auto">
       <h2 className="text-2xl font-semibold text-center mb-6">О магазине</h2>
       <p className="text-gray-700 leading-relaxed mb-4">
-        Наш косметический магазин был создан с одной простой целью — предоставить нашим клиентам
-        качественную косметику, которая подчеркивает естественную красоту. Мы верим, что каждая
-        деталь имеет значение, поэтому тщательно отбираем продукцию и сотрудников, чтобы вы всегда
-        могли быть уверены в высоком уровне сервиса.
+
+        Мы начали бизнес с Кореей, основываясь на собственных потребностях и стремлении к качеству.
+        Теперь мы хотим поделиться этим с вами, чтобы у каждого была возможность наслаждаться
+        действительно оригинальной и высококачественной корейской продукцией.
       </p>
       <p className="text-gray-700 leading-relaxed mb-4">
-        Наша команда состоит из профессионалов, которые работают с душой. Мы создаем не просто
-        магазин, а пространство, где каждый клиент чувствует себя особенным.
-      </p>
+        Каждый продукт, который мы предлагаем, — это результат нашего тщательного отбора и любви к
+        корейским стандартам красоты и здоровья. Мы здесь, чтобы сделать ваш уход за собой проще,
+        эффективнее и, главное, доступнее.
+      </p>  <p className="text-gray-700 leading-relaxed mb-4">
+      Наша команда состоит из профессионалов, которые работают с душой. Мы создаем не просто
+      магазин, а пространство, где каждый клиент чувствует себя особенным.
+    </p>
       <p className="text-gray-700 leading-relaxed">
-        Спасибо, что выбираете нас! Мы обещаем продолжать радовать вас и улучшать наш сервис.
+        Доверьтесь нам, и мы позаботимся о том, чтобы вы получали только лучшее из Кореи!
       </p>
     </section>
   </main>

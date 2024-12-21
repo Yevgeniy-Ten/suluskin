@@ -19,8 +19,8 @@ const Page = () => {
               местоположения и составляют от 1 до 5 рабочих дней.
             </p>
             <p className="text-gray-700 mt-2">
-              <span className="font-semibold">Стоимость:</span> Бесплатно для заказов от 10,000
-              тенге. Для заказов ниже этой суммы — 1,000 тенге.
+              <span className="font-semibold">Стоимость:</span> Бесплатно для заказов от 30,000
+              тенге. Для заказов ниже этой суммы — 1,500 внутри города Алматы.
             </p>
           </li>
           <li className="p-6 bg-gray-100 rounded-lg shadow-sm">
@@ -29,16 +29,13 @@ const Page = () => {
               Вы можете забрать свой заказ самостоятельно из нашего магазина. Мы отправим вам
               уведомление, когда заказ будет готов.
             </p>
-            <p className="text-gray-700 mt-2">
-              <span className="font-semibold">Адрес:</span> г. Алматы, ул. Примерная, 123.
-            </p>
           </li>
           <li className="p-6 bg-gray-100 rounded-lg shadow-sm">
             <h3 className="text-lg font-bold mb-2">Доставка в регионы</h3>
             <p className="text-gray-700 leading-relaxed">
               Мы отправляем заказы по всей территории Казахстана с помощью партнерских служб
-              доставки. Сроки доставки зависят от удаленности региона и составляют от 3 до 10
-              рабочих дней.
+              доставки - Кazpost, CDEK. Сроки доставки зависят от удаленности региона и составляют
+              от 3 до 10 рабочих дней.
             </p>
             <p className="text-gray-700 mt-2">
               <span className="font-semibold">Стоимость:</span> Рассчитывается индивидуально и
@@ -59,9 +56,8 @@ const Page = () => {
           возвратов.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          Если у вас есть вопросы по доставке, свяжитесь с нами по телефону <span
-          className="font-semibold">+7 (123) 456-78-90</span> или напишите на email <span
-          className="font-semibold">support@example.com</span>.
+          Если у вас есть вопросы по доставке, свяжитесь с нами по телефону (whatsapp)<span
+          className="font-semibold">+7 (708) 839-57-07</span>
         </p>
       </section>
     </main>

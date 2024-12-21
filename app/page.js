@@ -1,4 +1,7 @@
-import Cards from "@/src/modules/Cards/Cards";
+import MainPageCards from "@/src/modules/Cards/MainPageCards";
+import {Suspense} from "react";
+import {Loader} from "@/src/common/Loader";
+import {InputSearch} from "@/src/modules/CategoriesFilter/InputSearch";
 
 
 export default function Home() {
@@ -12,8 +15,12 @@ export default function Home() {
             товары.</p>
         </div>
       </section>
-
-      <Cards/>
+      <div className={"mx-auto px-2 container"}>
+        <InputSearch/>
+      </div>
+      <Suspense fallback={<Loader/>}>
+        <MainPageCards/>
+      </Suspense>
 
     </div>
   )

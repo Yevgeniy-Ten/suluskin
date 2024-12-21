@@ -3,11 +3,12 @@ import {ToCardButton} from "@/src/common/ToCardButton";
 
 export default async function Page({params}) {
   const slug = (await params).id
-  const res = await fetch('http://localhost:8080/products/' + slug)
+  // const res = await fetch('http://localhost:8080/products/' + slug)
+  const res = await fetch('https://suluskin.kz/api/products/' + slug)
   if(!res) return <div>404</div>
   const product = await res.json()
   return <div
-    className="container grid grid-cols-4 mx-auto p-8   mt-8 gap-12 items-start">
+    className="container flex flex-col lg:grid grid-cols-4 mx-auto p-8  mt-8 gap-12 items-start">
     <div className={"col-span-1 relative"}>
       <div
         className="absolute top-4 left-4 bg-red-300 z-20 text-white text-sm font-bold px-3 py-1 rounded-full">
@@ -20,9 +21,15 @@ export default async function Page({params}) {
     <div className={"col-span-3"}>
       <div className={"flex justify-between items-center"}>
         <div>
-          <h1 className="text-3xl font-bold text-gray-900"
+          <h1
+            onClick={e=>{
+              e.preventDefault()
+              e.stopPropagation()
+            }}
+            className="text-3xl font-bold text-gray-900 select-none"
               dangerouslySetInnerHTML={{__html: product.name}}
           />
+          <ToCardButton className={"flex mt-3 md:hidden"} product={product}/>
           <div className={"mt-2 flex items-center gap-3"}>
             <p className="text-lg text-gray-600">Категория: <span
               className="font-semibold">{product.category.name}</span></p>
@@ -31,7 +38,7 @@ export default async function Page({params}) {
             }/>
           </div>
         </div>
-        <ToCardButton product={product}/>
+        <ToCardButton className={"md:flex hidden"} product={product}/>
       </div>
 
       <div className="mt-4 flex items-center">
@@ -41,7 +48,7 @@ export default async function Page({params}) {
 
       <div className="mt-5">
         <h3 className="text-xl font-semibold text-gray-800">Описание</h3>
-        <div className={`mt-2 text-gray-700`}
+        <div className={`mt-2 text-gray-700 select-none`}
              dangerouslySetInnerHTML={{__html: product.text}}/>
       </div>
     </div>

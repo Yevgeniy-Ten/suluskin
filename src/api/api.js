@@ -51,6 +51,10 @@ export const service = {
     const res = await fetch(url)
     return await res.json()
   },
+  async searchProducts(searchValue){
+    const res = await fetch('/api/products?search=' + searchValue)
+    return await res.json()
+  },
   async getAllSubCategories() {
     const res = await fetch('/api/subcategory')
     return await res.json()

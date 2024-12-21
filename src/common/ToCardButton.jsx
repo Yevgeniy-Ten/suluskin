@@ -3,19 +3,19 @@ import {Button, ButtonSizes, ButtonVariants} from "@/src/common/Button";
 import {useBacket} from "@/src/store/backet";
 import classNames from "classnames";
 
-export const ToCardButton = ({product}) => {
+export const ToCardButton = ({product,className}) => {
   const backet = useBacket()
   const productInfo = backet.getProduct(product.id)
   const handleClick = () => {
     backet.addProduct(product)
   }
   return (
-    <div className="flex items-center gap-2">
+    <div className={classNames("flex items-center gap-2",className)}>
       <Button onClick={handleClick} size={productInfo ? ButtonSizes.xs : ButtonSizes.smm}
               className={classNames("flex items-center gap-2", {
                 "text-sm": !!productInfo
               })}>
-        В корзину <img src="/shopping-card.svg" alt="" className={"w-6"}/>
+        <span className={"text-nowrap"}>В корзину</span> <img src="/shopping-card.svg" alt="" className={"w-6"}/>
       </Button>
       {
         productInfo && <>

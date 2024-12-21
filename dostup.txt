@@ -8,3 +8,7 @@ ssh
 
 
 ssh root@92.38.48.114
+pg_restore -U yten -h localhost -d suluskin -v /path/to/backup.dump
+nohup ./suluskin > suluskin.log 2>&1 &
+lsof -i :8080
+kill -9 <PID>

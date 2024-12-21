@@ -24,7 +24,10 @@ const Backet = () => {
         toast.error('Введите номер телефона')
         return
       }
-      service.sendToTg(`Новый заказ на сумму: 30000 тг\n\nТелефон: ${inputRef.current.value}\n \nТовары: ${products.map(p => `${p.name} - ${p.price}.\nКоличество: 3\n---------------------------`).join('\n')}
+
+      service.sendToTg(`Новый заказ на сумму: ${totalSum} тг\n\nТелефон: ${inputRef.current.value}\n \nТовары: ${products.map(p => `${p.name} - ${p.price}.\nКоличество: ${
+        p.count
+      }\n---------------------------`).join('\n')}
     `)
       toast.success('Заказ создан. Ожидайте звонка')
       clearBacket()
