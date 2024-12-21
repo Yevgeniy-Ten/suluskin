@@ -1,10 +1,11 @@
 import {CardTags} from "@/src/modules/Cards/CardTags";
 import {ToCardButton} from "@/src/common/ToCardButton";
+import {ProductTitle} from "@/app/[id]/ProductTitle";
 
 export default async function Page({params}) {
   const slug = (await params).id
-  // const res = await fetch('http://localhost:8080/products/' + slug)
-  const res = await fetch('https://suluskin.kz/api/products/' + slug)
+  const res = await fetch('http://localhost:8080/products/' + slug)
+  // const res = await fetch('https://suluskin.kz/api/products/' + slug)
   if(!res) return <div>404</div>
   const product = await res.json()
   return <div
@@ -21,14 +22,7 @@ export default async function Page({params}) {
     <div className={"col-span-3"}>
       <div className={"flex justify-between items-center"}>
         <div>
-          <h1
-            onClick={e=>{
-              e.preventDefault()
-              e.stopPropagation()
-            }}
-            className="text-3xl font-bold text-gray-900 select-none"
-              dangerouslySetInnerHTML={{__html: product.name}}
-          />
+          <ProductTitle name={product.name}/>
           <ToCardButton className={"flex mt-3 md:hidden"} product={product}/>
           <div className={"mt-2 flex items-center gap-3"}>
             <p className="text-lg text-gray-600">Категория: <span

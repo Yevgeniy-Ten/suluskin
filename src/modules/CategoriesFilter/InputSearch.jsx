@@ -76,7 +76,11 @@ export const InputSearch = () => {
                               <img src={product.img} alt=""
                                    className={"w-10 object-cover rounded-lg"}/>
                               <div>
-                                <div dangerouslySetInnerHTML={{__html: product.name}}/>
+                                <div
+                                  onClick={e=>{
+                                    e.preventDefault()
+                                  }}
+                                  dangerouslySetInnerHTML={{__html: product.name}}/>
                                 <div className={"text-gray-500 font-medium"}>{product.price}тг</div>
                               </div>
                             </div>
